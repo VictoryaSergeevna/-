@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище Registration_patientsModelContainer" CdmEntityContainer="Registration_patientsEntities1">
+    <EntitySetMapping Name="Analyzes">
+      <EntityTypeMapping TypeName="Registration_patientsModel.Analyzes">
+        <MappingFragment StoreEntitySet="Analyzes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name_analyze" ColumnName="Name_analyze" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Archives">
+      <EntityTypeMapping TypeName="Registration_patientsModel.Archives">
+        <MappingFragment StoreEntitySet="Archives">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Number_Card" ColumnName="Number_Card" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+          <ScalarProperty Name="Passport" ColumnName="Passport" />
+          <ScalarProperty Name="Adress" ColumnName="Adress" />
+          <ScalarProperty Name="Phone_number" ColumnName="Phone_number" />
+          <ScalarProperty Name="Date_birth" ColumnName="Date_birth" />
+          <ScalarProperty Name="Id_Therapist" ColumnName="Id_Therapist" />
+          <ScalarProperty Name="Date_move" ColumnName="Date_move" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Card_Patients">
+      <EntityTypeMapping TypeName="Registration_patientsModel.Card_Patients">
+        <MappingFragment StoreEntitySet="Card_Patients">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Number_Card" ColumnName="Number_Card" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+          <ScalarProperty Name="Passport" ColumnName="Passport" />
+          <ScalarProperty Name="Adress" ColumnName="Adress" />
+          <ScalarProperty Name="Phone_number" ColumnName="Phone_number" />
+          <ScalarProperty Name="Date_birth" ColumnName="Date_birth" />
+          <ScalarProperty Name="Id_Therapist" ColumnName="Id_Therapist" />
+          <ScalarProperty Name="IsMoved" ColumnName="IsMoved" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Procedures">
+      <EntityTypeMapping TypeName="Registration_patientsModel.Procedures">
+        <MappingFragment StoreEntitySet="Procedures">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name_proced" ColumnName="Name_proced" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ref_Analyzes">
+      <EntityTypeMapping TypeName="Registration_patientsModel.Ref_Analyzes">
+        <MappingFragment StoreEntitySet="Ref_Analyzes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Id_Patient" ColumnName="Id_Patient" />
+          <ScalarProperty Name="Id_Therapist" ColumnName="Id_Therapist" />
+          <ScalarProperty Name="Id_Analyze" ColumnName="Id_Analyze" />
+          <ScalarProperty Name="Date_analyze" ColumnName="Date_analyze" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ref_Procedures">
+      <EntityTypeMapping TypeName="Registration_patientsModel.Ref_Procedures">
+        <MappingFragment StoreEntitySet="Ref_Procedures">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Id_proced" ColumnName="Id_proced" />
+          <ScalarProperty Name="Count_proced" ColumnName="Count_proced" />
+          <ScalarProperty Name="Id_Patient" ColumnName="Id_Patient" />
+          <ScalarProperty Name="Id_Therapist" ColumnName="Id_Therapist" />
+          <ScalarProperty Name="Date_proc" ColumnName="Date_proc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Result_Analyzes">
+      <EntityTypeMapping TypeName="Registration_patientsModel.Result_Analyzes">
+        <MappingFragment StoreEntitySet="Result_Analyzes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Id_ref_Analyzes" ColumnName="Id_ref_Analyzes" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Date_res_analyze" ColumnName="Date_res_analyze" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sick_leaves">
+      <EntityTypeMapping TypeName="Registration_patientsModel.Sick_leaves">
+        <MappingFragment StoreEntitySet="Sick_leaves">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Id_Patient" ColumnName="Id_Patient" />
+          <ScalarProperty Name="PlaceOfWork" ColumnName="PlaceOfWork" />
+          <ScalarProperty Name="Diagnosis" ColumnName="Diagnosis" />
+          <ScalarProperty Name="IsAmbulatory" ColumnName="IsAmbulatory" />
+          <ScalarProperty Name="IsStationary" ColumnName="IsStationary" />
+          <ScalarProperty Name="Id_Therapist" ColumnName="Id_Therapist" />
+          <ScalarProperty Name="Opening_date" ColumnName="Opening_date" />
+          <ScalarProperty Name="Closing_date" ColumnName="Closing_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Therapists">
+      <EntityTypeMapping TypeName="Registration_patientsModel.Therapists">
+        <MappingFragment StoreEntitySet="Therapists">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

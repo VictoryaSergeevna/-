@@ -1,0 +1,311 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Registration_patientsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Analyzes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name_analyze" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Ref_Analyzes" Relationship="Self.FK__Ref_Analy__Id_An__70DDC3D8" FromRole="Analyzes" ToRole="Ref_Analyzes" />
+  </EntityType>
+  <EntityType Name="Archives">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Number_Card" Type="Int32" Nullable="false" />
+    <Property Name="Surname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Patronymic" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Passport" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Adress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone_number" Type="String" MaxLength="12" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Date_birth" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Id_Therapist" Type="Int32" Nullable="false" />
+    <Property Name="Date_move" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Therapists" Relationship="Self.FK__Archives__Id_The__72C60C4A" FromRole="Archives" ToRole="Therapists" />
+  </EntityType>
+  <EntityType Name="Card_Patients">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Number_Card" Type="Int32" Nullable="false" />
+    <Property Name="Surname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Patronymic" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Passport" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Adress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone_number" Type="String" MaxLength="12" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Date_birth" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Id_Therapist" Type="Int32" Nullable="false" />
+    <Property Name="IsMoved" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Therapists" Relationship="Self.FK__Card_Pati__Id_Th__693CA210" FromRole="Card_Patients" ToRole="Therapists" />
+    <NavigationProperty Name="Ref_Analyzes" Relationship="Self.FK__Ref_Analy__Id_Pa__6EF57B66" FromRole="Card_Patients" ToRole="Ref_Analyzes" />
+    <NavigationProperty Name="Ref_Procedures" Relationship="Self.FK__Ref_Proce__Id_Pa__6D0D32F4" FromRole="Card_Patients" ToRole="Ref_Procedures" />
+    <NavigationProperty Name="Sick_leaves" Relationship="Self.FK__Sick_leav__Id_Pa__6A30C649" FromRole="Card_Patients" ToRole="Sick_leaves" />
+  </EntityType>
+  <EntityType Name="Procedures">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name_proced" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Ref_Procedures" Relationship="Self.FK__Ref_Proce__Id_Pa__6C190EBB" FromRole="Procedures" ToRole="Ref_Procedures" />
+  </EntityType>
+  <EntityType Name="Ref_Analyzes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Patient" Type="Int32" Nullable="false" />
+    <Property Name="Id_Therapist" Type="Int32" Nullable="false" />
+    <Property Name="Id_Analyze" Type="Int32" Nullable="false" />
+    <Property Name="Date_analyze" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Analyzes" Relationship="Self.FK__Ref_Analy__Id_An__70DDC3D8" FromRole="Ref_Analyzes" ToRole="Analyzes" />
+    <NavigationProperty Name="Card_Patients" Relationship="Self.FK__Ref_Analy__Id_Pa__6EF57B66" FromRole="Ref_Analyzes" ToRole="Card_Patients" />
+    <NavigationProperty Name="Therapists" Relationship="Self.FK__Ref_Analy__Id_Th__6FE99F9F" FromRole="Ref_Analyzes" ToRole="Therapists" />
+    <NavigationProperty Name="Result_Analyzes" Relationship="Self.FK__Result_An__Id_re__71D1E811" FromRole="Ref_Analyzes" ToRole="Result_Analyzes" />
+  </EntityType>
+  <EntityType Name="Ref_Procedures">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_proced" Type="Int32" Nullable="false" />
+    <Property Name="Count_proced" Type="Int32" Nullable="false" />
+    <Property Name="Id_Patient" Type="Int32" Nullable="false" />
+    <Property Name="Id_Therapist" Type="Int32" Nullable="false" />
+    <Property Name="Date_proc" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Card_Patients" Relationship="Self.FK__Ref_Proce__Id_Pa__6D0D32F4" FromRole="Ref_Procedures" ToRole="Card_Patients" />
+    <NavigationProperty Name="Procedures" Relationship="Self.FK__Ref_Proce__Id_Pa__6C190EBB" FromRole="Ref_Procedures" ToRole="Procedures" />
+    <NavigationProperty Name="Therapists" Relationship="Self.FK__Ref_Proce__Id_Th__6E01572D" FromRole="Ref_Procedures" ToRole="Therapists" />
+  </EntityType>
+  <EntityType Name="Result_Analyzes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_ref_Analyzes" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Date_res_analyze" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Ref_Analyzes" Relationship="Self.FK__Result_An__Id_re__71D1E811" FromRole="Result_Analyzes" ToRole="Ref_Analyzes" />
+  </EntityType>
+  <EntityType Name="Sick_leaves">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Patient" Type="Int32" Nullable="false" />
+    <Property Name="PlaceOfWork" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Diagnosis" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IsAmbulatory" Type="Boolean" Nullable="false" />
+    <Property Name="IsStationary" Type="Boolean" Nullable="false" />
+    <Property Name="Id_Therapist" Type="Int32" Nullable="false" />
+    <Property Name="Opening_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Closing_date" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Card_Patients" Relationship="Self.FK__Sick_leav__Id_Pa__6A30C649" FromRole="Sick_leaves" ToRole="Card_Patients" />
+    <NavigationProperty Name="Therapists" Relationship="Self.FK__Sick_leav__Id_Th__6B24EA82" FromRole="Sick_leaves" ToRole="Therapists" />
+  </EntityType>
+  <EntityType Name="Therapists">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Surname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Patronymic" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Archives" Relationship="Self.FK__Archives__Id_The__72C60C4A" FromRole="Therapists" ToRole="Archives" />
+    <NavigationProperty Name="Card_Patients" Relationship="Self.FK__Card_Pati__Id_Th__693CA210" FromRole="Therapists" ToRole="Card_Patients" />
+    <NavigationProperty Name="Ref_Analyzes" Relationship="Self.FK__Ref_Analy__Id_Th__6FE99F9F" FromRole="Therapists" ToRole="Ref_Analyzes" />
+    <NavigationProperty Name="Ref_Procedures" Relationship="Self.FK__Ref_Proce__Id_Th__6E01572D" FromRole="Therapists" ToRole="Ref_Procedures" />
+    <NavigationProperty Name="Sick_leaves" Relationship="Self.FK__Sick_leav__Id_Th__6B24EA82" FromRole="Therapists" ToRole="Sick_leaves" />
+  </EntityType>
+  <Association Name="FK__Ref_Analy__Id_An__70DDC3D8">
+    <End Role="Analyzes" Type="Self.Analyzes" Multiplicity="1" />
+    <End Role="Ref_Analyzes" Type="Self.Ref_Analyzes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Analyzes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ref_Analyzes">
+        <PropertyRef Name="Id_Analyze" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Archives__Id_The__72C60C4A">
+    <End Role="Therapists" Type="Self.Therapists" Multiplicity="1" />
+    <End Role="Archives" Type="Self.Archives" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Therapists">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Archives">
+        <PropertyRef Name="Id_Therapist" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Card_Pati__Id_Th__693CA210">
+    <End Role="Therapists" Type="Self.Therapists" Multiplicity="1" />
+    <End Role="Card_Patients" Type="Self.Card_Patients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Therapists">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Card_Patients">
+        <PropertyRef Name="Id_Therapist" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ref_Analy__Id_Pa__6EF57B66">
+    <End Role="Card_Patients" Type="Self.Card_Patients" Multiplicity="1" />
+    <End Role="Ref_Analyzes" Type="Self.Ref_Analyzes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Card_Patients">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ref_Analyzes">
+        <PropertyRef Name="Id_Patient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ref_Proce__Id_Pa__6D0D32F4">
+    <End Role="Card_Patients" Type="Self.Card_Patients" Multiplicity="1" />
+    <End Role="Ref_Procedures" Type="Self.Ref_Procedures" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Card_Patients">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ref_Procedures">
+        <PropertyRef Name="Id_Patient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Sick_leav__Id_Pa__6A30C649">
+    <End Role="Card_Patients" Type="Self.Card_Patients" Multiplicity="1" />
+    <End Role="Sick_leaves" Type="Self.Sick_leaves" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Card_Patients">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sick_leaves">
+        <PropertyRef Name="Id_Patient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ref_Proce__Id_Pa__6C190EBB">
+    <End Role="Procedures" Type="Self.Procedures" Multiplicity="1" />
+    <End Role="Ref_Procedures" Type="Self.Ref_Procedures" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Procedures">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ref_Procedures">
+        <PropertyRef Name="Id_Patient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ref_Analy__Id_Th__6FE99F9F">
+    <End Role="Therapists" Type="Self.Therapists" Multiplicity="1" />
+    <End Role="Ref_Analyzes" Type="Self.Ref_Analyzes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Therapists">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ref_Analyzes">
+        <PropertyRef Name="Id_Therapist" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Result_An__Id_re__71D1E811">
+    <End Role="Ref_Analyzes" Type="Self.Ref_Analyzes" Multiplicity="1" />
+    <End Role="Result_Analyzes" Type="Self.Result_Analyzes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ref_Analyzes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Result_Analyzes">
+        <PropertyRef Name="Id_ref_Analyzes" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ref_Proce__Id_Th__6E01572D">
+    <End Role="Therapists" Type="Self.Therapists" Multiplicity="1" />
+    <End Role="Ref_Procedures" Type="Self.Ref_Procedures" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Therapists">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ref_Procedures">
+        <PropertyRef Name="Id_Therapist" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Sick_leav__Id_Th__6B24EA82">
+    <End Role="Therapists" Type="Self.Therapists" Multiplicity="1" />
+    <End Role="Sick_leaves" Type="Self.Sick_leaves" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Therapists">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sick_leaves">
+        <PropertyRef Name="Id_Therapist" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Registration_patientsEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Analyzes" EntityType="Self.Analyzes" />
+    <EntitySet Name="Archives" EntityType="Self.Archives" />
+    <EntitySet Name="Card_Patients" EntityType="Self.Card_Patients" />
+    <EntitySet Name="Procedures" EntityType="Self.Procedures" />
+    <EntitySet Name="Ref_Analyzes" EntityType="Self.Ref_Analyzes" />
+    <EntitySet Name="Ref_Procedures" EntityType="Self.Ref_Procedures" />
+    <EntitySet Name="Result_Analyzes" EntityType="Self.Result_Analyzes" />
+    <EntitySet Name="Sick_leaves" EntityType="Self.Sick_leaves" />
+    <EntitySet Name="Therapists" EntityType="Self.Therapists" />
+    <AssociationSet Name="FK__Ref_Analy__Id_An__70DDC3D8" Association="Self.FK__Ref_Analy__Id_An__70DDC3D8">
+      <End Role="Analyzes" EntitySet="Analyzes" />
+      <End Role="Ref_Analyzes" EntitySet="Ref_Analyzes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Archives__Id_The__72C60C4A" Association="Self.FK__Archives__Id_The__72C60C4A">
+      <End Role="Therapists" EntitySet="Therapists" />
+      <End Role="Archives" EntitySet="Archives" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Card_Pati__Id_Th__693CA210" Association="Self.FK__Card_Pati__Id_Th__693CA210">
+      <End Role="Therapists" EntitySet="Therapists" />
+      <End Role="Card_Patients" EntitySet="Card_Patients" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ref_Analy__Id_Pa__6EF57B66" Association="Self.FK__Ref_Analy__Id_Pa__6EF57B66">
+      <End Role="Card_Patients" EntitySet="Card_Patients" />
+      <End Role="Ref_Analyzes" EntitySet="Ref_Analyzes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ref_Proce__Id_Pa__6D0D32F4" Association="Self.FK__Ref_Proce__Id_Pa__6D0D32F4">
+      <End Role="Card_Patients" EntitySet="Card_Patients" />
+      <End Role="Ref_Procedures" EntitySet="Ref_Procedures" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Sick_leav__Id_Pa__6A30C649" Association="Self.FK__Sick_leav__Id_Pa__6A30C649">
+      <End Role="Card_Patients" EntitySet="Card_Patients" />
+      <End Role="Sick_leaves" EntitySet="Sick_leaves" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ref_Proce__Id_Pa__6C190EBB" Association="Self.FK__Ref_Proce__Id_Pa__6C190EBB">
+      <End Role="Procedures" EntitySet="Procedures" />
+      <End Role="Ref_Procedures" EntitySet="Ref_Procedures" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ref_Analy__Id_Th__6FE99F9F" Association="Self.FK__Ref_Analy__Id_Th__6FE99F9F">
+      <End Role="Therapists" EntitySet="Therapists" />
+      <End Role="Ref_Analyzes" EntitySet="Ref_Analyzes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Result_An__Id_re__71D1E811" Association="Self.FK__Result_An__Id_re__71D1E811">
+      <End Role="Ref_Analyzes" EntitySet="Ref_Analyzes" />
+      <End Role="Result_Analyzes" EntitySet="Result_Analyzes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ref_Proce__Id_Th__6E01572D" Association="Self.FK__Ref_Proce__Id_Th__6E01572D">
+      <End Role="Therapists" EntitySet="Therapists" />
+      <End Role="Ref_Procedures" EntitySet="Ref_Procedures" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Sick_leav__Id_Th__6B24EA82" Association="Self.FK__Sick_leav__Id_Th__6B24EA82">
+      <End Role="Therapists" EntitySet="Therapists" />
+      <End Role="Sick_leaves" EntitySet="Sick_leaves" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
